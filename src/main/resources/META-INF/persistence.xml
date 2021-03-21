@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <!-- 데이터베이스명 -->
+    <persistence-unit name="hello">
+        <properties>
+            <!-- 방언: SQL 표준을 지키지 않는 특정 데이터베이스만의 고유한 기능 -->
+            <!-- 필수 속성 -->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> <!-- JPA는 특정 데이터베이스에 종속 X -->
+<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>-->
+            <!-- 옵션 -->
+            <property name="hibernate.show_sql" value="true"/>      <!-- 쿼리 뿌려주는 옵션-->
+            <property name="hibernate.format_sql" value="true"/>    <!-- 포맷팅 해주는 옵-->
+            <property name="hibernate.use_sql_comments" value="true"/>  <!-- 코멘트해주는 옵션 /* insert hellojpa.Member */ (주석) -->
+            <!--<property name="hibernate.jdbc.batch_size" value="10"/>--> <!-- 사이즈만큼 한방에 쿼리를 보냄 -->
+            <!-- create, create-drop(생성 후 어플리케이션 종료될 때 드랍됨, 보통 테스트 케이스에 쓰임), update(변경분 반영, 지우는 것은 안됨), validate(정상 매핑되었는지 확인), none은 생략가능 -->
+            <property name="hibernate.hbm2ddl.auto" value="create" />    <!-- 테이블 자 드랍 후 생성(로컬에서만 사용할 것) -->
+        </properties>
+    </persistence-unit>
+</persistence>
